@@ -38,7 +38,7 @@ public class CoffeeOrder {
     @Enumerated(EnumType.STRING)
     private CoffeeReward reward;
 
-    @Column(name = "rank", nullable = false)
+    @Column(name = "order_rank", nullable = false)
     private int rank;
 
     @Builder(access = AccessLevel.PRIVATE)

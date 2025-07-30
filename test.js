@@ -7,20 +7,23 @@ export const options = {
 };
 
 export default function () {
-  const userId = Math.floor(Math.random() * 1000) + 1;
-
+  const url = 'http://localhost:8080/api/coffee/orders';
   const payload = JSON.stringify({
-    userId: userId,
-    coffeeName: "Americano"  // ← 이 부분만 실제 DB 값으로 수정
+    userId: Math.floor(Math.random() * 10000), // 유저 ID는 적당히 랜덤하게
+    coffeeName: 'Americano'                    // DB에 존재하는 이름과 정확히 일치해야 함
   });
 
-  const headers = { 'Content-Type': 'application/json' };
+  const params = {
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  };
 
-  const res = http.post('http://localhost:8080/api/coffee/orders', payload, { headers });
+  const res = http.post(url, payload, params);
 
   check(res, {
     'status is 200': (r) => r.status === 200,
-    'has orderId': (r) => JSON.parse(r.body).orderId !== undefined,
-    'has rank': (r) => JSON.parse(r.body).rank !== undefined,
+    'has orderId': (r) => r.json('orderId') !== undefined,
+    'has rank': (r) => r.json('rank') !== undefined,
   });
 }
