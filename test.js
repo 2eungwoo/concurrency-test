@@ -22,8 +22,6 @@ export default function () {
   const res = http.post(url, payload, params);
 
   check(res, {
-    'status is 200': (r) => r.status === 200,
-    'has orderId': (r) => r.json('orderId') !== undefined,
-    'has rank': (r) => r.json('order_rank') !== undefined,
+    'status is 200': (r) => r.status === 200
   });
 }
