@@ -1,7 +1,7 @@
 package back2basics.concurrencytest.core.coffee.stock;
 
 import back2basics.concurrencytest.domain.coffee.stock.CoffeeStock;
-import back2basics.concurrencytest.domain.coffee.stock.CoffeeStockRepository;
+import back2basics.concurrencytest.domain.coffee.stock.CoffeeStockQueryDslRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -9,11 +9,10 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 public class CoffeeStockHandler {
 
-    private final CoffeeStockRepository stockRepository;
+    private final CoffeeStockQueryDslRepository stockRepository;
 
     public void decrease() {
-        CoffeeStock stock = stockRepository.findAvailableStock()
-            .orElseThrow(() -> new IllegalStateException("재고가 없습니다."));
+        CoffeeStock stock = stockRepository.findAvailableStock();
         stock.decrease();
     }
 }

@@ -5,7 +5,11 @@ build/
 !**/src/main/**/build/
 !**/src/test/**/build/
 
+### .env
 .env
+
+### querydsl
+/src/main/generated
 
 ### STS ###
 .apt_generated
