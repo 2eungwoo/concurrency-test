@@ -25,6 +25,14 @@ public class CoffeeOrderService implements CoffeeOrderUseCase {
         // 1. 재고 차감
         stockHandler.decrease();
 
+        // 의도적으로 1초 락 유지
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
+
+
         // 2. 순위 계산 및 보상 결정
         int rank = rankCalculator.calculate();
         CoffeeReward reward = rewardPolicy.assignReward(rank);
