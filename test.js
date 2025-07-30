@@ -24,6 +24,6 @@ export default function () {
   check(res, {
     'status is 200': (r) => r.status === 200,
     'has orderId': (r) => r.json('orderId') !== undefined,
-    'has rank': (r) => r.json('rank') !== undefined,
+    'has rank': (r) => r.json('order_rank') !== undefined,
   });
 }
