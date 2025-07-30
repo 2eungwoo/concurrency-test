@@ -12,7 +12,11 @@ public class OrderRankCalculator {
 
     public int calculate() {
         long count = repository.count();
-        if (count >= 100) throw new EventClosedException();
+
+        if (count >= 100) {
+            throw new EventClosedException();
+        }
+
         return (int) count + 1;
     }
 }
