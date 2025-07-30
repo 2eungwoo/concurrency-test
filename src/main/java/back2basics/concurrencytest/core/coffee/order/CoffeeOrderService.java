@@ -25,9 +25,9 @@ public class CoffeeOrderService implements CoffeeOrderUseCase {
         // 1. 재고 차감
         stockHandler.decrease();
 
-        // 의도적으로 1초 락 유지
+        // 의도적으로 0.5초 락 유지
         try {
-            Thread.sleep(1000);
+            Thread.sleep(500);
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
         }
