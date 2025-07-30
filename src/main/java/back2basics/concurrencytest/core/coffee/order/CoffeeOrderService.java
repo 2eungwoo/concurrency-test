@@ -30,10 +30,10 @@ public class CoffeeOrderService implements CoffeeOrderUseCase {
         CoffeeReward reward = rewardPolicy.assignReward(rank);
 
         // 3. 주문 생성 및 저장
-        CoffeeOrder order = CoffeeOrder.create(command.userId(), command.coffeeName(), reward);
+        CoffeeOrder order = CoffeeOrder.create(command.userId(), command.coffeeName(), reward, rank);
         CoffeeOrder saved = orderRepository.save(order);
 
         // 4. 결과 반환
-        return CoffeeOrderResult.of(saved.getId(), saved.getReward());
+        return CoffeeOrderResult.of(saved.getId(), saved.getReward(), rank);
     }
 }

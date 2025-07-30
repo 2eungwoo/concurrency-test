@@ -37,19 +37,24 @@ public class CoffeeOrder {
     @Enumerated(EnumType.STRING)
     private CoffeeReward reward;
 
+    @Column(name = "rank", nullable = false)
+    private int rank;
+
     @Builder(access = AccessLevel.PRIVATE)
-    private CoffeeOrder(Long userId, String coffeeName, CoffeeReward reward) {
+    private CoffeeOrder(Long userId, String coffeeName, CoffeeReward reward, int rank) {
         this.userId = userId;
         this.coffeeName = coffeeName;
         this.createdAt = java.time.LocalDateTime.now();
         this.reward = reward;
+        this.rank = rank;
     }
 
-    public static CoffeeOrder create(Long userId, String coffeeName, CoffeeReward reward) {
+    public static CoffeeOrder create(Long userId, String coffeeName, CoffeeReward reward, int rank) {
         return CoffeeOrder.builder()
             .userId(userId)
             .coffeeName(coffeeName)
             .reward(reward)
+            .rank(rank)
             .build();
     }
 }
