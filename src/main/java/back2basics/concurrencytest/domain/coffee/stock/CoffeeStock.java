@@ -39,4 +39,12 @@ public class CoffeeStock {
             .quantity(quantity)
             .build();
     }
+
+
+    public void decrease() {
+        if (this.quantity <= 0) {
+            throw new IllegalStateException("재고가 부족합니다.");
+        }
+        this.quantity -= 1;
+    }
 }
