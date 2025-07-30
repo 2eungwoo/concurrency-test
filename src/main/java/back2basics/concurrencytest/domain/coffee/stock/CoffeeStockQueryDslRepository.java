@@ -18,7 +18,6 @@ public class CoffeeStockQueryDslRepository {
             .selectFrom(coffeeStock)
             .where(coffeeStock.quantity.gt(0))
             .orderBy(coffeeStock.id.asc())
-            .setLockMode(LockModeType.PESSIMISTIC_WRITE)
             .fetchFirst();
 
         if (stock == null) {
