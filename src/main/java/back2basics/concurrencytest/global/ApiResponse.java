@@ -1,7 +1,9 @@
 package back2basics.concurrencytest.global;
 
 import back2basics.concurrencytest.api.CoffeeOrderResponse;
+import lombok.Getter;
 
+@Getter
 public class ApiResponse {
     private final boolean success;
     private final CoffeeOrderResponse data;
@@ -19,17 +21,5 @@ public class ApiResponse {
 
     public static ApiResponse fail(String errorMessage) {
         return new ApiResponse(false, null, errorMessage);
-    }
-
-    public boolean isSuccess() {
-        return success;
-    }
-
-    public CoffeeOrderResponse getData() {
-        return data;
-    }
-
-    public String getError() {
-        return error;
     }
 }

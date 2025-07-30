@@ -1,5 +1,7 @@
 package back2basics.concurrencytest.global;
 
+import static org.springframework.http.HttpStatus.INTERNAL_SERVER_ERROR;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -8,7 +10,9 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 public class GlobalExceptionHandler {
 
     @ExceptionHandler(Exception.class)
-    public ResponseEntity<ApiResponse> handleException(Exception e) {
-        return ResponseEntity.ok(ApiResponse.fail(e.getMessage()));
+    protected ResponseEntity<ApiResponse> handleException(Exception e) {
+        return ResponseEntity
+            .status(INTERNAL_SERVER_ERROR)
+            .body(ApiResponse.fail(e.getMessage()));
     }
 }
