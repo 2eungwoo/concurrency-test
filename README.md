@@ -14,5 +14,11 @@
  >  - 4th–10th: Wooden Coffee  
 >   - 11th–100th: Regular Coffee  
 
+## Branches
+> - `main`: Basic setup without any concurrency control  
+> - `lock/pessimistic`: Version with **Pessimistic Locking** applied  
+> - `lock/optimistic`: Version with **Optimistic Locking** applied  
+> - `isolation`: Version using **Transaction Isolation Levels** for concurrency control  
+
 ## etc
-> updated in 2025.07.30
+> updated in 2025.07.31
