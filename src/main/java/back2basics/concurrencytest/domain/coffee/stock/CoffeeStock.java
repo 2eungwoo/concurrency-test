@@ -1,5 +1,6 @@
 package back2basics.concurrencytest.domain.coffee.stock;
 
+import back2basics.concurrencytest.common.exception.OutOfStockException;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -43,7 +44,7 @@ public class CoffeeStock {
 
     public void decrease() {
         if (this.quantity <= 0) {
-            throw new IllegalStateException("재고가 부족합니다.");
+            throw new OutOfStockException();
         }
         this.quantity -= 1;
     }
