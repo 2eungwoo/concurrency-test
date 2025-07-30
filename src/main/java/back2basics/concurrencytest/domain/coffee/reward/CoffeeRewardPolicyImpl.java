@@ -1,8 +1,13 @@
 package back2basics.concurrencytest.domain.coffee.reward;
 
-public class CoffeeRewardPolicy {
+import back2basics.concurrencytest.core.coffee.reward.CoffeeRewardPolicy;
+import org.springframework.stereotype.Component;
 
-    public static CoffeeReward getRewardByRank(int rank) {
+@Component
+public class CoffeeRewardPolicyImpl implements CoffeeRewardPolicy {
+
+    @Override
+    public CoffeeReward assignReward(int rank) {
         if (rank == 1) return CoffeeReward.GOLD;
         if (rank == 2) return CoffeeReward.SILVER;
         if (rank == 3) return CoffeeReward.BRONZE;

@@ -1,0 +1,17 @@
+package back2basics.concurrencytest.core.coffee.order.utils;
+
+import back2basics.concurrencytest.domain.coffee.order.CoffeeOrderRepository;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Component;
+
+@Component
+@RequiredArgsConstructor
+public class OrderRankCalculator {
+    private final CoffeeOrderRepository repository;
+
+    public int calculate() {
+        long count = repository.count();
+        if (count >= 100) throw new IllegalStateException("이벤트 마감");
+        return (int) count + 1;
+    }
+}
