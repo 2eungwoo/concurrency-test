@@ -3,6 +3,7 @@ package back2basics.concurrencytest.domain.coffee.stock;
 import static back2basics.concurrencytest.domain.coffee.stock.QCoffeeStock.coffeeStock;
 
 import com.querydsl.jpa.impl.JPAQueryFactory;
+import jakarta.persistence.LockModeType;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
@@ -17,6 +18,7 @@ public class CoffeeStockQueryDslRepository {
             .selectFrom(coffeeStock)
             .where(coffeeStock.quantity.gt(0))
             .orderBy(coffeeStock.id.asc())
+            .setLockMode(LockModeType.PESSIMISTIC_WRITE)
             .fetchFirst();
 
         if (stock == null) {
