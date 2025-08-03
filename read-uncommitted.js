@@ -7,7 +7,7 @@ export const options = {
 };
 
 export default function () {
-  const url = 'http://localhost:8080/api/coffee/orders/read-committed';
+  const url = 'http://localhost:8080/api/coffee/orders/read-uncommitted';
   const payload = JSON.stringify({
     userId: Math.floor(Math.random() * 10000), // 유저 ID는 적당히 랜덤하게
     coffeeName: 'Americano'                    // DB에 존재하는 이름과 정확히 일치해야 함
