@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 public class OrderRankCalculator {
     private final CoffeeOrderRepository repository;
+    private final SleepTimer sleepTimer;
 
     public int calculate() {
         long count = repository.count();
@@ -17,6 +18,8 @@ public class OrderRankCalculator {
             throw new EventClosedException();
         }
 
+        // 순위 계산 후 커밋 전 race condition 유도
+        sleepTimer.sleep();
         return (int) count + 1;
     }
 }

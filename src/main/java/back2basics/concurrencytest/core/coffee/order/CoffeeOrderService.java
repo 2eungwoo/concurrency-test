@@ -1,7 +1,5 @@
 package back2basics.concurrencytest.core.coffee.order;
 
-import static java.lang.Thread.sleep;
-
 import back2basics.concurrencytest.core.coffee.order.dto.CoffeeOrderCommand;
 import back2basics.concurrencytest.core.coffee.order.dto.CoffeeOrderResult;
 import back2basics.concurrencytest.core.coffee.order.usecase.CoffeeOrderUseCase;
@@ -53,11 +51,9 @@ public class CoffeeOrderService implements CoffeeOrderUseCase {
 
         // 재고 감소 후 슬립: 다른 트랜잭션이 감소 전 재고값 참조 가능하게끔
         stockHandler.decrease();
-        sleep();
 
         // 순위 계산 후 슬립: 다른 트랜잭션이 같은 순위를 할당받을 가능하게끔
         int rank = rankCalculator.calculate();
-        sleep();
 
         CoffeeReward reward = rewardPolicy.assignReward(rank);
 
@@ -65,13 +61,5 @@ public class CoffeeOrderService implements CoffeeOrderUseCase {
         CoffeeOrder saved = orderRepository.save(order);
 
         return CoffeeOrderResult.of(saved.getId(), saved.getReward(), rank);
-    }
-
-    private void sleep(){
-        try {
-            Thread.sleep(100);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
     }
 }
