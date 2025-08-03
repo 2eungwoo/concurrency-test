@@ -1,4 +1,4 @@
-package back2basics.concurrencytest.core.coffee.order;
+package back2basics.concurrencytest.core.coffee.order.dto;
 
 import back2basics.concurrencytest.domain.coffee.reward.CoffeeReward;
 

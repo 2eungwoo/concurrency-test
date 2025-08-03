@@ -1,6 +1,6 @@
 package back2basics.concurrencytest.api;
 
-import back2basics.concurrencytest.core.coffee.order.CoffeeOrderResult;
+import back2basics.concurrencytest.core.coffee.order.dto.CoffeeOrderResult;
 
 public record CoffeeOrderResponse(Long orderId, String reward, int rank) {
 
