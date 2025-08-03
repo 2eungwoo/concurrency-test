@@ -1,0 +1,1 @@
+INSERT INTO coffee_stock (coffee_name, quantity) VALUES ('Americano', 100);
