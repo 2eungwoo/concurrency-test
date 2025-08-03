@@ -4,6 +4,7 @@ import { check } from 'k6';
 export const options = {
   vus: 100,
   duration: '1s',
+  iterations: 100, // 각 vu당 1회
 };
 
 export default function () {
