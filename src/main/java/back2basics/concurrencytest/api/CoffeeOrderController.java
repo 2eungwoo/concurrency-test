@@ -37,4 +37,9 @@ public class CoffeeOrderController {
         return orderService.orderWithSerializable(command);
     }
 
+    @PostMapping("/default")
+    public CoffeeOrderResult orderD(@RequestBody CoffeeOrderCommand command) {
+        return orderService.orderWithDefault(command);
+    }
+
 }
