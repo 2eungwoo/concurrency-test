@@ -17,26 +17,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class CoffeeOrderController {
     private final CoffeeOrderUseCase orderService;
 
-    @PostMapping("/read-uncommitted")
-    public CoffeeOrderResult orderRU(@RequestBody CoffeeOrderCommand command) {
-        return orderService.orderWithReadUncommitted(command);
-    }
-
-    @PostMapping("/read-committed")
-    public CoffeeOrderResult orderRC(@RequestBody CoffeeOrderCommand command) {
-        return orderService.orderWithReadCommitted(command);
-    }
-
-    @PostMapping("/repeatable-read")
-    public CoffeeOrderResult orderRR(@RequestBody CoffeeOrderCommand command) {
-        return orderService.orderWithRepeatableRead(command);
-    }
-
-    @PostMapping("/serializable")
-    public CoffeeOrderResult orderS(@RequestBody CoffeeOrderCommand command) {
-        return orderService.orderWithSerializable(command);
-    }
-
     @PostMapping("/default")
     public CoffeeOrderResult orderD(@RequestBody CoffeeOrderCommand command) {
         return orderService.orderWithDefault(command);

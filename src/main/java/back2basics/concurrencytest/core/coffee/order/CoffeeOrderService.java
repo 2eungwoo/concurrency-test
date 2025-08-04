@@ -24,30 +24,6 @@ public class CoffeeOrderService implements CoffeeOrderUseCase {
     private final OrderRankCalculator rankCalculator;
 
     @Override
-    @Transactional(isolation = Isolation.READ_UNCOMMITTED)
-    public CoffeeOrderResult orderWithReadUncommitted(CoffeeOrderCommand command) {
-        return processOrder(command);
-    }
-
-    @Override
-    @Transactional(isolation = Isolation.READ_COMMITTED)
-    public CoffeeOrderResult orderWithReadCommitted(CoffeeOrderCommand command) {
-        return processOrder(command);
-    }
-
-    @Override
-    @Transactional(isolation = Isolation.REPEATABLE_READ)
-    public CoffeeOrderResult orderWithRepeatableRead(CoffeeOrderCommand command) {
-        return processOrder(command);
-    }
-
-    @Override
-    @Transactional(isolation = Isolation.SERIALIZABLE)
-    public CoffeeOrderResult orderWithSerializable(CoffeeOrderCommand command) {
-        return processOrder(command);
-    }
-
-    @Override
     @Transactional(isolation = Isolation.DEFAULT)
     public CoffeeOrderResult orderWithDefault(CoffeeOrderCommand command) {
         return processOrder(command);
