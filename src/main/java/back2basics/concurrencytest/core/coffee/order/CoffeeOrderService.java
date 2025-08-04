@@ -47,6 +47,12 @@ public class CoffeeOrderService implements CoffeeOrderUseCase {
         return processOrder(command);
     }
 
+    @Override
+    @Transactional(isolation = Isolation.DEFAULT)
+    public CoffeeOrderResult orderWithDefault(CoffeeOrderCommand command) {
+        return processOrder(command);
+    }
+
     private CoffeeOrderResult processOrder(CoffeeOrderCommand command) {
 
         // 재고 감소 후 슬립: 다른 트랜잭션이 감소 전 재고값 참조 가능하게끔

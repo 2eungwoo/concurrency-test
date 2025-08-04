@@ -8,4 +8,5 @@ public interface CoffeeOrderUseCase {
     CoffeeOrderResult orderWithReadCommitted(CoffeeOrderCommand command);
     CoffeeOrderResult orderWithRepeatableRead(CoffeeOrderCommand command);
     CoffeeOrderResult orderWithSerializable(CoffeeOrderCommand command);
+    CoffeeOrderResult orderWithDefault(CoffeeOrderCommand command);
 }
