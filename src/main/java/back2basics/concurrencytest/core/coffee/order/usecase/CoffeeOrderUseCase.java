@@ -5,4 +5,5 @@ import back2basics.concurrencytest.core.coffee.order.dto.CoffeeOrderResult;
 
 public interface CoffeeOrderUseCase {
     CoffeeOrderResult orderWithDefault(CoffeeOrderCommand command);
+    CoffeeOrderResult orderWithPessimisticLock(CoffeeOrderCommand command);
 }
